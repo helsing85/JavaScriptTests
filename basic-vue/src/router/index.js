@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage/HomePage.vue";
 import AboutPage from "@/pages/AboutPage/AboutPage.vue";
 import InfoPage from "@/pages/InfoPage/InfoPage.vue";
+import NewDataPage from "@/pages/NewDataPage/NewDataPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +30,12 @@ const router = createRouter({
       name: "InfoPage",
       component: InfoPage,
     },
+    {
+      path: "/data",
+      name: "NewDataPage",
+      component: NewDataPage,
+    },
+
     // {
     //   path: "/:pathMatch(.*)*",
     //   name: "HomePage",

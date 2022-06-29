@@ -1,39 +1,22 @@
 <template>
-    <h1>Books</h1>
-    <ul v-if="show">
-        <li v-for="book of books" :key="book">{{ book }}</li>
-    </ul>
-    <div>
-        <button @click="show = false">Hide</button>
-        <button @click="show = true">Show</button>
-    </div>
+
+    <BooksComponent title="Books" :books="books" />
     <br>
-
-    <table style="border: 1px solid #ccc">
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-        <tr v-for="user of users" :key="user.id" @click="showUserData(user)">
-            <th>{{ user.id }}</th>
-            <th>{{ user.firstName }}</th>
-            <th>{{ user.secondName }}</th>
-        </tr>
-    </table>
-
-    <button @click="changeUser">Zmień użytkownika</button>
+    <UsersComponent title="Users" :users="users" />
+    <button @click="setNewUser">New User</button>
+    <UserData @change="changeUser($event)" :userName="users[1].firstName" :userSecondName="users[1].secondName" />
 
 </template>
 
 <script setup>
 import { ref } from "vue";
+import BooksComponent from "@/pages/AboutPage/Widgets/Books/BooksComponent.vue";
+import UsersComponent from "@/pages/AboutPage/Widgets/Users/UsersComponent.vue";
+import UserData from "@/pages/AboutPage/Widgets/UserData.vue";
 
 const books = ref([
-    "Book 1", "Book 2", "Book 3"
+    "Book 1", "Book 2", "Book 6"
 ])
-
-let show = ref(false)
 
 let users = ref([
     { id: 1, firstName: 'Jan', secondName: 'Kowalski' },
@@ -41,13 +24,18 @@ let users = ref([
     { id: 3, firstName: 'Adam', secondName: 'Jakiś' },
 ])
 
-function changeUser() {
-    users.value[1].firstName = 'Michał'
+function changeUser(userDetails) {
+    console.log('New user details:', userDetails)
+    users.value[1].firstName = userDetails.changedUserName
+    users.value[1].secondName = userDetails.changedUserSecondName
 }
 
-function showUserData(user) {
-    console.log(user.firstName, user.secondName)
+function setNewUser() {
+    //users.value[1].firstName = 'Tomasz'
+    //users.value[1].secondName = 'Czarny'
+    changeUser({ changedUserName: 'Tomasz', changedUserSecondName: 'Czarny' })
 }
+
 </script>
 
 <style>
