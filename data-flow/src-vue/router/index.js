@@ -33,6 +33,10 @@ const router = createRouter({
       name: "EditTask",
       component: EditTaskVue,
     },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "HomePage" },
+    },
   ],
 });
 

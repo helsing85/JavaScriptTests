@@ -20,18 +20,31 @@ app.get("/api/first-data", (req, res) => {
   res.json(message);
 }); */
 
+function addHours(numOfHours, date = new Date()) {
+  date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000);
+
+  return date;
+}
+
+function formatDate(date){
+  date = date.toISOString();
+  date = date.replace("T", " ");
+  date = date.substring(0, 19);
+  return date
+}
+
 app.get("/api/tasks", (req, res) => {
   const tasks = [
     {
       id: 1,
-      name: "First task S",
-      date: "2022-07-05 10:00:02",
+      name: "First Srv",
+      date: formatDate(addHours(1)),
       status: "not-completed",
     },
     {
       id: 2,
-      name: "Second task S",
-      date: "2022-07-05 10:05:02",
+      name: "Second Srv",
+      date: formatDate(addHours(2)),
       status: "not-completed",
     },
   ];

@@ -40,6 +40,7 @@ export const useTasksStore = defineStore({
       const service = new TasksService();
       service.getTasks().then((response) => {
         this.insertTasks(response);
+        //console.log(response)
       });
     },
     changeTaskName(id, name) {
