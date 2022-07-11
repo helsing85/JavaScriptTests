@@ -1,21 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomePageVue from "@/pages/HomePage/HomePage.vue";
+import AboutPageVue from "@/pages/AboutPage/AboutPage.vue";
+import InfoPageVue from "@/pages/InfoPage/InfoPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: HomeView,
+      path: "/home",
+      name: "HomePage",
+      component: HomePageVue,
     },
+
     {
       path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      name: "AboutPage",
+      component: AboutPageVue,
+    },
+    {
+      path: "/info",
+      name: "InfoPage",
+      component: InfoPageVue,
+    },
+    //Otworz HomePage jesli strona nie zostanie znaleziona
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "HomePage" },
     },
   ],
 });
