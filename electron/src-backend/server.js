@@ -4,7 +4,7 @@ const app = express();
 const isDevelopment = process.env.NODE_ENV !== "production";
 const port = isDevelopment ? 3001 : 3000;
 
-app.get("/api/users", (req, res) => {
+app.get("/api/users/", (req, res) => {
   //res.send("Hello World!");
 
   const usersDataArray = [
@@ -27,7 +27,7 @@ app.get("/api/users", (req, res) => {
   res.json(usersDataArray);
 });
 
-app.get("/api/books", (req, res) => {
+app.get("/api/books/", (req, res) => {
   
     const booksDataArray = [
       {

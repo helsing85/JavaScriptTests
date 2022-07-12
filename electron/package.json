@@ -11,14 +11,15 @@
     "electron": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "build-all": "npm run build-vue && npm run electron"
+    "build-all": "npm run build-vue && npm run dist"
   },
   "main": "src-electron/main.js",
   "build": {
     "appId": "test app",
     "files": [
       "./dist/**/*",
-      "./src-electron/**/*"
+      "./src-electron/**/*",
+      "./src-backend/**/*"
     ],
     "directories": {
       "output": "releases",

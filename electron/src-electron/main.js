@@ -1,9 +1,13 @@
 const { app, BrowserWindow } = require("electron");
+
 process.env.NODE_ENV = "production";
+const server = require(__dirname + "/../src-backend/server.js");
+
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1200,
+    width: 800,
     height: 600,
+    autoHideMenuBar: true,
   });
   win.loadFile(__dirname + "/../dist/index.html");
 }
